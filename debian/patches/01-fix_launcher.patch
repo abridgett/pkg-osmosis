@@ -1,0 +1,45 @@
+From: David Paleino <dapal@debian.org>
+Subject: fix launcher to correctly point to installed files
+Forwarded: not-needed
+
+---
+ package/bin/osmosis |   18 ++++++++++--------
+ 1 file changed, 10 insertions(+), 8 deletions(-)
+
+--- a/package/bin/osmosis
++++ b/package/bin/osmosis
+@@ -5,8 +5,8 @@
+ # JAVACMD_OPTIONS - The options to append to the java command, typically used to modify jvm settings such as max memory.
+ # OSMOSIS_OPTIONS - The options to apply to all osmosis invocations, typically used to add plugins or make quiet operation the default.
+ 
+-if [ -f /etc/osmosis ] ; then
+-  . /etc/osmosis
++if [ -f /etc/osmosis/osmosis.conf ] ; then
++  . /etc/osmosis/osmosis.conf
+ fi
+ 
+ if [ -f "$HOME/.osmosis" ] ; then
+@@ -80,15 +80,17 @@ exit 1
+ fi
+ 
+ # make it fully qualified
+-saveddir=`pwd`
+-MYAPP_HOME=`dirname "$PRG"`/..
+-MYAPP_HOME=`cd "$MYAPP_HOME" && pwd`
+-cd "$saveddir"
++MYAPP_HOME="/usr/share/osmosis"
++LIBRARIES_HOME="/usr/share/java"
+ 
+ # Build up the classpath of required jar files via classworlds launcher.
+-MYAPP_CLASSPATH=$MYAPP_HOME/lib/default/plexus-classworlds-*.jar
++MYAPP_CLASSPATH=$LIBRARIES_HOME/plexus-classworlds.jar
+ 
+ MAINCLASS=org.codehaus.classworlds.Launcher
+-EXEC="$JAVACMD $JAVACMD_OPTIONS -cp $MYAPP_CLASSPATH -Dapp.home=$MYAPP_HOME -Dclassworlds.conf=$MYAPP_HOME/config/plexus.conf  $MAINCLASS $OSMOSIS_OPTIONS"
++EXEC="$JAVACMD $JAVACMD_OPTIONS -cp $MYAPP_CLASSPATH"
++EXEC="$EXEC -Dapp.home=$MYAPP_HOME"
++EXEC="$EXEC -Dclassworlds.conf=/etc/osmosis/plexus.conf"
++EXEC="$EXEC -Dlog4j.configuration=file:/etc/osmosis/log4j.properties"
++EXEC="$EXEC $MAINCLASS $OSMOSIS_OPTIONS"
+ 
+ exec $EXEC "$@"

@@ -1,0 +1,5 @@
+01-fix_launcher.patch
+02-fix_plexus.patch
+03-local-dependencies.patch
+04-osmosis-version.patch
+06-java-7.patch

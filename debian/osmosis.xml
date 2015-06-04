@@ -1,0 +1,97 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+"http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+  <!ENTITY dhfirstname "Giovanni">
+  <!ENTITY dhsurname   "Mascellani">
+  <!ENTITY dhusername  "Giovanni Mascellani">
+  <!ENTITY dhemail     "mascellani@poisson.phc.unipi.it">
+  <!ENTITY dhsection   "1">
+  <!ENTITY dhtitle     "Osmosis User Manual">
+  <!ENTITY dhucpackage "OSMOSIS">
+  <!ENTITY dhpackage   "osmosis">
+]>
+
+<refentry>
+  <refentryinfo>
+    <title>&dhtitle;</title>
+    <productname>&dhpackage;</productname>
+    <authorgroup>
+      <author>
+       <firstname>&dhfirstname;</firstname>
+        <surname>&dhsurname;</surname>
+        <contrib>Wrote this manpage for the Debian system.</contrib>
+        <address>
+          <email>&dhemail;</email>
+        </address>
+      </author>
+    </authorgroup>
+    <copyright>
+      <year>2009</year>
+      <holder>&dhusername;</holder>
+    </copyright>
+    <legalnotice>
+      <para>This manual page was written for the Debian system
+        (and may be used by others).</para>
+      <para>Permission is granted to copy, distribute and/or modify this
+        document under the terms of the GNU General Public License,
+        Version 3 or (at your option) any later version published by
+        the Free Software Foundation.</para>
+      <para>On Debian systems, the complete text of the GNU General Public
+        License can be found in
+        <filename>/usr/share/common-licenses/GPL</filename>.</para>
+    </legalnotice>
+  </refentryinfo>
+  <refmeta>
+    <refentrytitle>&dhucpackage;</refentrytitle>
+    <manvolnum>&dhsection;</manvolnum>
+  </refmeta>
+  <refnamediv>
+    <refname>&dhpackage;</refname>
+    <refpurpose>command line OpenStreetMap data processor</refpurpose>
+  </refnamediv>
+  <refsynopsisdiv>
+    <cmdsynopsis>
+      <command>&dhpackage;</command>
+      <arg choice="opt"><option>--command <parameter>command parameters ...</parameter></option></arg> ...
+    </cmdsynopsis>
+  </refsynopsisdiv>
+  <refsect1 id="description">
+    <title>DESCRIPTION</title>
+    <para>This manual page documents briefly the
+      <command>&dhpackage;</command> command.</para>
+    <para>This manual page was written for the Debian distribution
+      because the original program does not have a manual page.</para>
+    <para><command>&dhpackage;</command> is a command line Java application for
+    processing OSM data. The tool consists of pluggable components that can be
+    chained to perform a larger operation. For example, it has components for
+    reading/writing databases and files, deriving/applying changes to data
+    sources, and sorting data, (etc.). It has been written to easily add new
+    features without re-writing common tasks such as file and database
+    handling.</para>
+    <para>Some examples of the things it can currently do are:</para>
+    <itemizedlist>
+      <listitem><para>Generate planet dumps from a database</para></listitem>
+      <listitem><para>Load planet dumps into a database</para></listitem>
+      <listitem><para>Produce change sets using database history tables</para></listitem>
+      <listitem><para>Apply change sets to a local database</para></listitem>
+      <listitem><para>Compare two planet dump files and produce a change set</para></listitem>
+      <listitem><para>Re-sort the data contained in planet dump files</para></listitem>
+      <listitem><para>Extract data inside a bounding box or polygon</para></listitem>
+    </itemizedlist>
+  </refsect1>
+  <refsect1 id="options">
+    <title>OPTIONS</title>
+    <para>The commands and arguments accepted by <command>&dhpackage;</command>
+      are described in details and shown in examples in the page
+      <ulink url="http://wiki.openstreetmap.org/wiki/Osmosis"/> and its
+      subpages.</para>
+  </refsect1>
+  <refsect1 id="bugs">
+    <title>BUGS</title>
+    <para>The upstreams <acronym>BTS</acronym> can be found
+      at <ulink url="http://trac.openstreetmap.org/query?component=osmosis"/>.
+      Bugs are also discussed on upstream mailing list, at
+      <ulink url="http://lists.openstreetmap.org/listinfo/osmosis-dev"/>.</para>
+  </refsect1>
+</refentry>
+

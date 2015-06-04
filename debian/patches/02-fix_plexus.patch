@@ -1,0 +1,33 @@
+From: David Paleino <dapal@debian.org>
+Subject: fix Plexus configuration with the right paths
+Forwarded: not-needed
+
+---
+ package/config/plexus.conf |   18 ++++++++++++++++--
+ 1 file changed, 16 insertions(+), 2 deletions(-)
+
+--- a/package/config/plexus.conf
++++ b/package/config/plexus.conf
+@@ -1,5 +1,20 @@
+ main is org.openstreetmap.osmosis.core.Osmosis from osmosis.core
+ 
+ [osmosis.core]
+-load ${app.home}/lib/default/*.jar
+-load ${app.home}/config
++load /usr/share/java/jpf.jar
++load /usr/share/java/commons-compress.jar
++load /usr/share/java/commons-codec.jar
++load /usr/share/java/commons-dbcp.jar
++load /usr/share/java/mysql-connector-java.jar
++load /usr/share/java/postgis.jar
++load /usr/share/java/postgresql.jar
++load /usr/share/java/spring3-beans.jar
++load /usr/share/java/spring3-core.jar
++load /usr/share/java/spring3-jdbc.jar
++load /usr/share/java/spring3-transaction.jar
++load /usr/share/java/batik-ext.jar
++load /usr/share/java/protobuf.jar
++load /usr/share/java/osmpbf.jar
++load /usr/share/java/commons-pool.jar
++load /usr/share/java/xercesImpl.jar
++load /usr/share/osmosis/*.jar

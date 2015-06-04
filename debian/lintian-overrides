@@ -1,0 +1,4 @@
+osmosis: duplicate-files usr/share/doc/osmosis/examples/pgsimple_schema_0.6_action.sql usr/share/doc/osmosis/examples/pgsnapshot_schema_0.6_action.sql
+
+# OpenJDK 7 is preferred
+osmosis: incompatible-java-bytecode-format Java7 version (Class format: 51)

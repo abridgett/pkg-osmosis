@@ -1,0 +1,74 @@
+Source: osmosis
+Maintainer: Debian GIS Project <pkg-grass-devel@lists.alioth.debian.org>
+Uploaders: David Paleino <dapal@debian.org>,
+           Bas Couwenberg <sebastic@debian.org>
+Section: utils
+Priority: optional
+Build-Depends: gradle,
+               ant-optional,
+               debhelper (>= 9),
+               libcommons-codec-java,
+               libcommons-compress-java (>= 1.4.1),
+               libcommons-dbcp-java,
+               libjdepend-java,
+               libjpf-java,
+               libmysql-java,
+               libnetty-java,
+               libpostgis-java,
+               libpostgresql-jdbc-java,
+               libspring-beans-java,
+               libspring-context-java,
+               libspring-jdbc-java,
+               libspring-transaction-java,
+               libwoodstox-java,
+               libstax2-api-java,
+               libbatik-java,
+               libprotobuf-java,
+               libosmpbf-java,
+               libplexus-classworlds-java,
+               libxerces2-java,
+               libxz-java,
+               checkstyle (>= 5.6),
+               ivy,
+               junit4 (>= 4.10),
+               default-jdk,
+               maven-repo-helper
+Standards-Version: 3.9.6
+Vcs-Browser: http://anonscm.debian.org/cgit/pkg-grass/osmosis.git
+Vcs-Git: git://anonscm.debian.org/pkg-grass/osmosis.git
+Homepage: http://wiki.openstreetmap.org/wiki/Osmosis
+
+Package: osmosis
+Architecture: all
+Depends: default-jre-headless | java7-runtime-headless,
+         libcommons-codec-java,
+         libcommons-compress-java (>= 1.4.1),
+         libcommons-dbcp-java,
+         libjpf-java,
+         libmysql-java,
+         libnetty-java,
+         libpostgis-java,
+         libpostgresql-jdbc-java,
+         libspring-beans-java,
+         libspring-context-java,
+         libspring-core-java,
+         libspring-jdbc-java,
+         libspring-transaction-java,
+         libplexus-classworlds-java,
+         libprotobuf-java,
+         libosmpbf-java,
+         libbatik-java,
+         libcommons-pool-java,
+         libxerces2-java,
+         libxz-java,
+         ${misc:Depends}
+Description: Command line OpenStreetMap data processor
+ Osmosis consists of a series of components that can be chained together
+ in order to perform operations on an OpenStreetMap database or
+ OpenStreetMap XML or PBF files. Such operations include:
+  * Generate and load dumps from and to a database.
+  * Produce changesets comparing databases and files and applying
+    them to other databases and files.
+  * Sort data contained in a file.
+  * Extract data contained in a bounding box or in a polygon.
+

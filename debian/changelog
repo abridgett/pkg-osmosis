@@ -1,0 +1,266 @@
+osmosis (0.44.1-1) unstable; urgency=medium
+
+  * New upstream release.
+  * Drop patches applied upstream, refresh remaining patches.
+  * Update alternative JRE dependency for Java 7 to match sourceCompatibility.
+
+ -- Bas Couwenberg <sebastic@debian.org>  Thu, 04 Jun 2015 19:10:52 +0200
+
+osmosis (0.43.1-6) unstable; urgency=medium
+
+  * Fix malformed opts=... in watchfile.
+
+ -- Bas Couwenberg <sebastic@debian.org>  Sat, 30 May 2015 14:43:15 +0200
+
+osmosis (0.43.1-5) unstable; urgency=medium
+
+  * Don't compress SQL examples to allow piping into psql with just cat.
+  * Add patch from upstream to fix java.lang.ClassCastException for
+    java.util.HashMap to org.openstreetmap.osmosis.hstore.PGHStore.
+    (closes: #785257)
+  * Add patches from upstream master branch, changes include:
+    - db-server
+    - way-nodes fixes
+    - replication URL updates to match current planet.osm.org layout
+
+ -- Bas Couwenberg <sebastic@debian.org>  Thu, 14 May 2015 16:21:36 +0200
+
+osmosis (0.43.1-4) unstable; urgency=medium
+
+  * Move from experimental to unstable.
+
+ -- Bas Couwenberg <sebastic@debian.org>  Sun, 26 Apr 2015 21:05:47 +0200
+
+osmosis (0.43.1-4~exp1) experimental; urgency=medium
+
+  * Update 02-fix_plexus.patch to also load Xerces to fix data corruption.
+    (closes: #779807)
+  * Update my email to @debian.org address.
+
+ -- Bas Couwenberg <sebastic@debian.org>  Thu, 05 Mar 2015 09:45:06 +0100
+
+osmosis (0.43.1-3~exp1) experimental; urgency=medium
+
+  * Update watch file to use github tags instead of the deprecated
+    githubredir service.
+  * Bump Standards-Version to 3.9.6, no changes.
+  * Add upstream metadata.
+  * Add patch to fix negative exit status in replicate_osm_file.sh.
+    (closes: #772355)
+  * Update Vcs-Browser URL to use cgit instead of gitweb.
+
+ -- Bas Couwenberg <sebastic@xs4all.nl>  Sat, 10 Jan 2015 13:56:29 +0100
+
+osmosis (0.43.1-2) unstable; urgency=medium
+
+  * Add patch to update generated source for protobuf 2.6.0.
+    (closes: #761562)
+  * Add patch to increase source compatibility from 1.6 to 1.7.
+  * Add patches from upstream master branch.
+
+ -- Bas Couwenberg <sebastic@xs4all.nl>  Sat, 27 Sep 2014 21:43:24 +0200
+
+osmosis (0.43.1-1) unstable; urgency=medium
+
+  [ Giovanni Mascellani ]
+  * Remove myself from the uploaders list, since I have no time
+    anymore to look after this package.
+
+  [ Andreas Tille ]
+  * moved to pkg-grass Git repository
+
+  [ Bas Couwenberg ]
+  * New upstream release.
+    (closes: #710039, #700311)
+  * Change Maintainer to Debian GIS Project.
+  * Add myself to Uploaders.
+  * Restructure control file with cme, changes: Vcs-* URLs.
+  * Add gbp.conf to use pristine-tar by default.
+  * Drop get-orig-source target, repacking no longer required.
+  * Remove dependencies on ant, gradle now used for build.
+    (closes: 703635)
+  * Enable parallel builds.
+  * Bump Debhelper compatibility to 9.
+  * Use dh with maven-repo-helper.
+  * Add build dependency on libwoodstox-java.
+  * Add patch to use packaged libraries during build.
+    (closes: #713278)
+  * Remove generated files and directories on clean.
+  * Bump Standards-Version to 3.9.5, changes: Vcs-* fields.
+  * Add patch to get version from changelog instead of git.
+  * Add patches from upstream master branch.
+
+ -- Bas Couwenberg <sebastic@xs4all.nl>  Sun, 08 Jun 2014 09:54:55 +0200
+
+osmosis (0.40.1+ds1-7) unstable; urgency=low
+
+  * Added missing dependency on libxz-java (Closes: #680820)
+
+ -- David Paleino <dapal@debian.org>  Tue, 10 Jul 2012 09:10:35 +0200
+
+osmosis (0.40.1+ds1-6) unstable; urgency=low
+
+  * Use a dedicate ivy cache, to don't interfere with user cache.
+  * Fix some mistakes in dependency resolution, that led to FTBFS
+    (closes: #674314).
+
+ -- Giovanni Mascellani <gio@debian.org>  Fri, 15 Jun 2012 12:24:22 +0200
+
+osmosis (0.40.1+ds1-5) unstable; urgency=low
+
+  * Bump dependency on libcommons-compress-java (Closes: #664597)
+  * Bump dependency on checkstyle (Closes: #664602)
+  * Updated debian/copyright
+
+ -- David Paleino <dapal@debian.org>  Sat, 14 Apr 2012 19:19:28 +0200
+
+osmosis (0.40.1+ds1-4) unstable; urgency=low
+
+  * Switch dependency from libpg-java to libpostgresql-jdbc-java
+    (Closes: #659399)
+  * Drop junit4 workaround: now Debian has 4.10
+  * Bump Standards-Version to 3.9.3, no changes needed
+  * Updated debian/copyright
+
+ -- David Paleino <dapal@debian.org>  Thu, 08 Mar 2012 08:23:40 +0100
+
+osmosis (0.40.1+ds1-3) unstable; urgency=low
+
+  * Add missing Osmosis JARs to Plexus config (Closes: #656432)
+
+ -- David Paleino <dapal@debian.org>  Fri, 20 Jan 2012 12:24:34 +0100
+
+osmosis (0.40.1+ds1-2) unstable; urgency=low
+
+  * Removing references to libwoodstox-java, which is not necessary to
+    build osmosis.
+
+ -- Giovanni Mascellani <gio@debian.org>  Wed, 11 Jan 2012 16:53:25 +0100
+
+osmosis (0.40.1+ds1-1) unstable; urgency=low
+
+  * New upstream version
+  * Fix debian/watch and debian/rules' get-orig-source to point to github
+  * Refresh patches to apply to the new source
+    - added 04-fix_dependencies_versions.patch and
+      05-workaround_missing_junit4.10.patch
+  * Fix links to protobuf's jar (Closes: #650617, #652754)
+  * Add dependencies to libxerces2-java
+
+ -- David Paleino <dapal@debian.org>  Fri, 30 Dec 2011 00:29:51 +0100
+
+osmosis (0.39+ds1-6) unstable; urgency=low
+
+  * Fix plexus config file to correctly point to jars (Closes: #647452)
+
+ -- David Paleino <dapal@debian.org>  Wed, 02 Nov 2011 21:54:01 +0100
+
+osmosis (0.39+ds1-5) unstable; urgency=low
+
+  * Add dependency to libcommons-pool-java (Closes: #644712)
+  * Provide a log4j config file, thanks to Alberto Fernández (Closes: #579206)
+  * Osmosis configuration file is now set to /etc/osmosis/osmosis.conf
+    (Closes: #644841)
+
+ -- David Paleino <dapal@debian.org>  Sun, 09 Oct 2011 20:12:58 +0200
+
+osmosis (0.39+ds1-4) unstable; urgency=low
+
+  * 00-fix_build_system.patch updated: don't hardcode version number
+    in jar filenames.
+  * 01-fix_launcher.patch fixed: osmosis.jar doesn't exist anymore.
+  * 02-fix_plexus.patch: use ${app.home} instead of hardcoding osmosis
+    path.
+
+ -- David Paleino <dapal@debian.org>  Sat, 01 Oct 2011 22:21:58 +0200
+
+osmosis (0.39+ds1-3) unstable; urgency=low
+
+  * Fix plexus config file not to load duplicate jars, by hardcoding
+    osmosis' version number in it.
+
+ -- David Paleino <dapal@debian.org>  Thu, 29 Sep 2011 11:44:16 +0200
+
+osmosis (0.39+ds1-2) unstable; urgency=low
+
+  * Complete switch from Spring Framework 2.5 to 3.0 (Closes: #638539)
+  * Add unversioned .jar symlinks to /usr/share/osmosis/
+
+ -- David Paleino <dapal@debian.org>  Wed, 28 Sep 2011 20:33:50 +0200
+
+osmosis (0.39+ds1-1) unstable; urgency=low
+
+  [ David Paleino ]
+  * New upstream release (closes: #605698)
+  * Fix get-orig-source target in debian/rules
+  * Use debhelper compatibility 8
+  * Bump Standards-Version to 3.9.2, no changes needed
+  * Fix debian/rules to support multi-archified java
+  * Package moved from pkg-grass to pkg-osm
+  * Package switched from cdbs to dh7
+
+  [ Giovanni Mascellani ]
+  * debian/watch: updated
+  * debian/patches:
+    - 00-fix_build.patch: removed, build system has completely changed;
+    - 01-fix_launcher.patch, 02-fix_plexus.patch: files moved, conflicts
+      resolved.
+  * Depend on headless runtime environment and use default-jdk at
+    building time (closes: #613135).
+
+ -- David Paleino <dapal@debian.org>  Wed, 28 Sep 2011 19:03:10 +0200
+
+osmosis (0.34+ds1-1) unstable; urgency=low
+
+  [ David Paleino ]
+  * New upstream version
+  * debian/control:
+    - updated my e-mail address
+    - DMUA removed
+    - added missing Build-Dependencies: libcommons-compress-java,
+      libcommons-codec-java
+    - added pkg-osm to Uploaders
+    - Standards-Version bumped to 3.8.4, no changes needed
+    - rewrapped for easier diff'ing
+    - add alternative openjdk-6-jre dependency to java6-runtime
+    - add dependency on libplexus-classworlds-java, libcommons-codec-java
+      and libcommons-compress-java
+  * debian/rules:
+    - updated get-orig-source target to strip unwanted *.jar files
+  * debian/copyright updated
+  * debian/source/format added, using 3.0 (quilt)
+  * debian/patches/:
+    - 00-fix_build.patch added, fixes FTBFS because of missing file
+      in upstream tarball
+    - 01-fix_launcher.patch added, correctly point to the right paths
+    - 02-fix_plexus.patch added, fix Plexus configuration with the
+      right paths
+  * debian/osmosis.1 statically generated, so to remove unneeded
+    Build-Dependencies
+  * debian/watch: use dversionmangle
+  * debian/install: install plexus.conf in /etc/osmosis/
+
+  [ Giovanni Mascellani ]
+  * debian/*: updated my email address
+  * debian/watch: updated to new upstream distribution location
+
+ -- David Paleino <dapal@debian.org>  Thu, 01 Apr 2010 01:13:13 +0200
+
+osmosis (0.31.2-2) unstable; urgency=low
+
+  [ Giovanni Mascellani ]
+  * Fixed some path mistakes and missing files in output JAR
+    (closes: #550151, #550149)
+  * Vcs-* fields updated
+
+ -- David Paleino <d.paleino@gmail.com>  Fri, 09 Oct 2009 00:53:42 +0200
+
+osmosis (0.31.2-1) unstable; urgency=low
+
+  [ Giovanni Mascellani ]
+  * Initial release (Closes: #497457).
+
+  [ Francesco Paolo Lovergine ]
+  * Added docbook-xml among build-dep.
+
+ -- Francesco Paolo Lovergine <frankie@debian.org>  Mon, 05 Oct 2009 22:25:18 +0200

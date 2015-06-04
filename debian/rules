@@ -1,0 +1,42 @@
+#!/usr/bin/make -f
+
+export JAVA_HOME := /usr/lib/jvm/default-java/
+
+DB2MAN := /usr/share/sgml/docbook/stylesheet/xsl/nwalsh/manpages/docbook.xsl
+XP := xsltproc -''-nonet -''-param man.charmap.use.subset "0"
+
+debian/osmosis.1: debian/osmosis.xml
+	$(XP) -o $@ $(DB2MAN) $<
+
+%:
+	dh $@ --with maven_repo_helper --parallel
+
+override_dh_auto_build:
+	gradle --offline --no-daemon --stacktrace \
+	       --gradle-user-home debian/gradle-user-home \
+	       --project-prop osmosisBuildType=RELEASE \
+	       assemble
+
+override_dh_auto_test:
+	gradle --offline --no-daemon --stacktrace \
+	       --gradle-user-home debian/gradle-user-home \
+	       --project-prop osmosisBuildType=RELEASE \
+	       check -x test
+
+override_dh_clean:
+	gradle --offline --no-daemon --stacktrace \
+	       --gradle-user-home debian/gradle-user-home \
+	       --project-prop osmosisBuildType=RELEASE \
+	       clean -x build
+
+	rm -rf .gradle package/lib debian/gradle-user-home
+
+	dh_clean osmosis-core/src/main/java/org/openstreetmap/osmosis/core/OsmosisConstants.java \
+	         osmosis-core/src/main/resources/org/openstreetmap/osmosis/core/plugin/plugin.xml
+
+override_dh_installchangelogs:
+	dh_installchangelogs -- package/changes.txt
+
+override_dh_compress:
+	dh_compress -X.conf -X.sql
+

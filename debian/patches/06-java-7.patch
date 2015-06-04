@@ -1,0 +1,14 @@
+Description: Bump source compatibility from 1.6 to 1.7.
+Author: Bas Couwenberg <sebastic@xs4all.nl>
+
+--- a/build.gradle
++++ b/build.gradle
+@@ -46,7 +46,7 @@ configure(javaProjects) {
+ 	apply plugin: 'maven'
+ 	apply plugin: 'signing'
+ 
+-	sourceCompatibility = 1.6
++	sourceCompatibility = 1.7
+ 
+ 	test {
+ 		/*

@@ -1,0 +1,46 @@
+<ivysettings>
+
+	<settings defaultResolver="debian-m2"/>
+
+	<resolvers>
+
+		<!-- This resolver is for artifacts that have a POM in Maven repository;
+                     everything should come from here, unless the exceptions below. -->
+		<ibiblio
+			name="debian-m2"
+			m2compatible="true"
+			root="file:///usr/share/maven-repo"/>
+
+		<!-- Some artifacts used within osmosis are dependencies for others; this
+                     resolver make them available. -->
+		<filesystem name="local">
+			<artifact pattern="${debian.dir}/../build/[artifact].[ext]" />
+		</filesystem>
+
+		<!-- This resolver is for artifacts without POMs; they're selected using
+                     only their filename. -->
+		<filesystem name="share-java">
+			<artifact pattern="/usr/share/java/[artifact](-[revision]).[ext]" />
+		</filesystem>
+
+	</resolvers>
+
+	<!-- Do not use the user cache, but use a directory in debian/ -->
+	<caches defaultCacheDir="${debian.dir}/ivy-cache">
+	</caches>
+
+	<!-- Here we map artifacts to resolvers (everything not declared here uses
+             the default resolver, defined above). -->
+	<modules>
+
+		<!-- Artifacts from osmosis itself. -->
+		<module organisation="org.openstreetmap.osmosis" resolver="local"/>
+
+		<!-- Artifacts without POMs. -->
+		<module organisation="postgresql" name="postgresql" resolver="share-java"/>
+		<module organisation="crosby" name="osmpbf" resolver="share-java"/>
+		<module organisation="org.postgis" name="postgis" resolver="share-java"/>
+	</modules>
+
+</ivysettings>
+

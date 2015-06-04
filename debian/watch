@@ -1,0 +1,7 @@
+version=3
+opts=\
+dversionmangle=s/\+(debian|dfsg|ds|deb)\d*$//,\
+uversionmangle=s/(\d)[_\.\-\+]?((RC|rc|pre|dev|beta|alpha)\d*)$/$1~$2/,\
+filenamemangle=s/(?:.*)?v?(\d[\d\.]*)\.tar\.gz/osmosis-$1.tar.gz/ \
+https://github.com/openstreetmap/osmosis/tags \
+(?:.*/)?v?(\d[\d\.]*)\.tar\.gz

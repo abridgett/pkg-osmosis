@@ -1,0 +1,18 @@
+Description: Extract osmosis version from changelog instead of git.
+Author: Bas Couwenberg <sebastic@xs4all.nl>
+--- a/build.gradle
++++ b/build.gradle
+@@ -23,7 +23,7 @@ subprojects {
+ 
+ 	// Load the project version dynamically from Git.  For release builds, don't add a suffix.
+ 	def versionSuffix = "RELEASE".equals(osmosisBuildType) ? '' : '-' + osmosisBuildType
+-	version = 'git describe --always --dirty'.execute().in.text.trim() + versionSuffix
++	version = 'sh osmosis-version.sh'.execute().in.text.trim()
+ 
+ 	// Enable access to artefact dependency repositories.
+ 	repositories {
+--- /dev/null
++++ b/osmosis-version.sh
+@@ -0,0 +1,2 @@
++#!/bin/sh
++dpkg-parsechangelog | sed -ne 's/^Version: \(.*\)-.*/\1/p'
